@@ -12,8 +12,12 @@ Launch the program, enter expression on first line and variable values on the se
     3.5
 
 Supported operations:
-    Multiplication: x*y
-    Division: x/y
-    Summation: x+y
-    Subtraction: x-y
+* Multiplication: x*y
+
+* Division: x/y
+
+* Summation: x+y
+
+* Subtraction: x-y
+
 
