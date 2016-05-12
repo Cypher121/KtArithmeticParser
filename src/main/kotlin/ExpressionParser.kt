@@ -1,10 +1,3 @@
-val operations = mapOf(
-        "+" to (::add to 0),
-        "-" to (::subtract to 0),
-        "/" to (::divide to 1),
-        "*" to (::multiply to 1)
-)
-
 fun List<String>.parse(
         exprQueue: List<String> = emptyList(),
         opStack: List<String> = emptyList()
