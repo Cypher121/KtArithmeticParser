@@ -25,12 +25,12 @@ fun String.splitTokens(): List<String> {
     if (isBlank()) return emptyList()
 
     val tokenIndex = indexOfAny(
-            "()+-/*".toCharArray()
+        "()+-/*".toCharArray()
     )
 
     if (tokenIndex < 0) return listOf(this)
 
     return substring(0, tokenIndex).splitTokens() +
-            this[tokenIndex].toString() +
-            substring(tokenIndex + 1).splitTokens()
+           this[tokenIndex].toString() +
+           substring(tokenIndex + 1).splitTokens()
 }
