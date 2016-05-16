@@ -1,4 +1,4 @@
-fun List<String>.parse(
+tailrec fun List<String>.parse(
         exprQueue: List<String> = emptyList(),
         opStack: List<String> = emptyList()
 ): (Map<String, Double>) -> Double {
@@ -49,7 +49,7 @@ fun List<String>.parse(
     return rest.parse(exprQueue + token, opStack)
 }
 
-fun List<String>.constructExpression(
+tailrec fun List<String>.constructExpression(
         constructed: List<(Map<String, Double>) -> Double> = emptyList()
 ): (Map<String, Double>) -> Double {
     if (isEmpty())
@@ -67,14 +67,19 @@ fun List<String>.constructExpression(
         return rest.constructExpression(gen(constructed[1], constructed[0]) and (constructed.subList(2, constructed.size)))
     }
 
-    try {
-        val num = token.toDouble()
-        return rest.constructExpression(constant(num) and constructed)
-    } catch (e: NumberFormatException) {
+    val expr = if (token.isNumber())
+        constant(token.toDouble())
+    else
+        variable(token)
 
-    }
-
-    return rest.constructExpression(variable(token) and constructed)
+    return rest.constructExpression(expr and constructed)
 }
 
 infix fun<T> T.and(list: List<T>) = listOf(this) + list
+
+fun String.isNumber() = try {
+    toDouble()
+    true
+} catch (e: NumberFormatException) {
+    false
+}
