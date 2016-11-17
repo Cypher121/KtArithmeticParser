@@ -14,12 +14,7 @@ fun readString(): String = readLine().run {
         this
 }
 
-fun List<String>.normalize() = flatMap { it.splitTokens() }.run {
-    if (first() == "(" && last() == ")")
-        subList(1, lastIndex)
-    else
-        this
-}
+fun List<String>.normalize(): List<String> = flatMap(String::splitTokens)
 
 fun String.splitTokens(): List<String> {
     if (isBlank()) return emptyList()
@@ -30,7 +25,7 @@ fun String.splitTokens(): List<String> {
 
     if (tokenIndex < 0) return listOf(this)
 
-    return substring(0, tokenIndex).splitTokens() +
+    return take(tokenIndex).splitTokens() +
            this[tokenIndex].toString() +
-           substring(tokenIndex + 1).splitTokens()
+           drop(tokenIndex + 1).splitTokens()
 }

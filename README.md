@@ -11,7 +11,7 @@ Launch the program, enter expression on first line and variable values on the se
     
     3.5
 
-Supported operations:
+Supported binaryOperations:
 * Multiplication: x*y
 
 * Division: x/y
