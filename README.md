@@ -11,13 +11,17 @@ Launch the program, enter expression on first line and variable values on the se
     
     3.5
 
-Supported binaryOperations:
-* Multiplication: x*y
+Supported operations:
+* Multiplication: `x * y`
 
-* Division: x/y
+* Division: `x / y`
 
-* Summation: x+y
+* Summation: `x + y`
 
-* Subtraction: x-y
+* Subtraction: `x - y`
+
+* Unary minus: `-x`
+
+* Unary plus: `+x`
 
 
